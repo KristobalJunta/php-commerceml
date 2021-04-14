@@ -1,5 +1,5 @@
 {
-  "name": "carono/commerceml",
+  "name": "kristobaljunta/commerceml",
   "type": "library",
   "homepage": "https://github.com/zenwalker/php-commerceml",
   "description": "Library for parsing CommerceML files",
