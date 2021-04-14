@@ -19,6 +19,11 @@ class OfferPackage extends Simple
     protected $offers = [];
 
     /**
+     * @var Store[]
+     */
+    protected $stores = [];
+
+    /**
      * @var Simple[] array
      */
     protected $priceTypes = [];
@@ -37,6 +42,19 @@ class OfferPackage extends Simple
         }
 
         return null;
+    }
+
+    /**
+     * @return Store[]
+     */
+    public function getStores()
+    {
+        if (empty($this->stores) && $this->xml && $this->xml->Склады) {
+            foreach ($this->xml->Склады->Склад as $store) {
+                $this->stores[] = new Store($this->owner, $store);
+            }
+        }
+        return $this->stores;
     }
 
     /**
