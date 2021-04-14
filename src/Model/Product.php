@@ -21,6 +21,7 @@ use Zenwalker\CommerceML\Collections\SpecificationCollection;
  * @property RequisiteCollection requisites
  * @property Price[] prices
  * @property PropertyCollection properties
+ * @property SpecificationCollection specifications
  */
 class Product extends Simple
 {
@@ -65,7 +66,10 @@ class Product extends Simple
      */
     public function getSpecifications()
     {
-        return $this->getOffer() ? $this->getOffer()->getSpecifications() : null;
+        if (empty($this->specifications)) {
+            $this->specifications = new SpecificationCollection($this->owner, $this->ХарактеристикиТовара);
+        }
+        return $this->specifications;
     }
 
     /**
